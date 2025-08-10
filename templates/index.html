@@ -1,7 +1,119 @@
 {% extends "layout.html" %}
 
-{% block title %}MiniBlog{% endblock %}
+{% block title %}Inicio - Mi Blog{% endblock %}
 
 {% block content %}
-<h1>MiniBlog</h1>
+<div class="container py-4">
+  <div class="row mb-4">
+      <div class="col-12 text-center">
+          <h1 class="display-5 fw-bold mb-3"><span class="text-primary">ÚLTIMOS</span> BLOGS</h1>
+          <p class="lead">Descubre las publicaciones más recientes de nuestra comunidad</p>
+          
+  <div class="row g-4">
+      {% if blogs %}
+          {% for blog in blogs %}
+          <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card h-100 shadow-sm">
+                  {% if blog.blog_category %}
+                  <div class="position-absolute top-0 end-0 m-2">
+                      <span class="badge bg-primary text-white">{{ blog.blog_category.name }}</span>
+                  </div>
+                  {% endif %}
+                  
+                  <div class="card-body d-flex flex-column">
+                      <h3 class="card-title h5">{{ blog.title }}</h3>
+                      <p class="card-text text-muted small mb-3">
+                          <i class="bi bi-person"></i> {{ blog.author.username }} 
+                          <span class="mx-2">•</span>
+                          <i class="bi bi-calendar"></i> {{ blog.created_at.strftime('%d/%m/%Y') }}
+                      </p>
+                      
+                      <div class="card-text mb-3 flex-grow-1 overflow-auto" style="max-height: 150px; white-space: pre-line;text-align: left;">
+                          {{ blog.description | replace('\n', '<br>') | safe }}
+                      </div>
+                      
+                      <div class="mt-3">
+                          <div class="d-flex flex-wrap align-items-center gap-2">
+                              <div class="me-2">
+                                  <a href="#" class="btn btn-sm btn-outline-primary rounded-pill position-relative">
+                                      <i class="bi bi-chat-dots me-1"></i> Comentar
+                                      {% if blog.comment_count > 0 %}
+                                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill border border-white bg-warning text-dark">
+                                          {{ blog.comment_count }}
+                                          <span class="visually-hidden"><i class="bi bi-chat-square-text me-2"></i></span>
+                                      </span>
+                                      {% endif %}
+                                  </a>
+                              </div>
+                              
+                              {% if current_user.is_authenticated and current_user.id == blog.author.id %}
+                              <div class="me-2">
+                                  <a href="#" class="btn btn-sm btn-outline-secondary rounded-pill mx-2" title="Editar">
+                                      <i class="bi bi-pencil me-1"></i>Editar
+                                  </a>
+                              </div>
+                              <div>
+                                  <form action="#" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este blog?')">
+                                      <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill" title="Eliminar">
+                                          <i class="bi bi-trash me-1"></i>Eliminar
+                                      </button>
+                                  </form>
+                              </div>
+                              {% endif %}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      {% else %}
+          <div class="col-12">
+              <div class="alert alert-info text-center">
+                  No hay blogs publicados todavía. 
+                  {% if current_user.is_authenticated %}
+                      <a href="#" class="alert-link">¡Crea el primero!</a>
+                  {% else %}
+                      <a href="#" class="alert-link">Inicia sesión</a> para crear un blog.
+                  {% endif %}
+              </div>
+          </div>
+      {% endif %}
+  </div>
+</div>
+
+<style>
+    .card {
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .card-title {
+        color: #333;
+        font-weight: 600;
+    }
+    
+    .badge {
+        font-size: 0.7rem;
+        font-weight: 500;
+        padding: 0.35em 0.65em;
+    }
+    
+    h1 span {
+        color: #0d6efd;
+    }
+    
+    .btn-outline-primary {
+        border-radius: 20px;
+    }
+    
+    .btn-sm {
+        padding: 0.25rem 0.75rem;
+    }
+</style>
 {% endblock %}
