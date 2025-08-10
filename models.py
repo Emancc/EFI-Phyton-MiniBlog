@@ -1,5 +1,6 @@
 from flask_login import UserMixin
-from app import db
+from werkzeug.security import generate_password_hash, check_password_hash
+from extensions import db
 
 
 class Users(UserMixin, db.Model):
@@ -16,4 +17,3 @@ class Users(UserMixin, db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
-
