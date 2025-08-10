@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %} Crear Blog {% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card-crear shadow-sm">
+                <div class="card-body">
+                    <h1 class=" text-center display-5 fw-bold mb-3"><span class="text-primary">CREAR</span> BLOGS</h1>
+                    <p class="lead text-center">Crea un nuevo blog para compartir tus ideas y conocimientos</p>
+                    <form method="post" action="">
+                        <div class="form-group mb-3">
+                            <label for="titulo" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo" required>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label for="categoria" class="form-label">Categoría</label>
+                            <select class="form-select" id="categoria" name="categoria">
+                                <option value="" selected>Selecciona una categoría (opcional)</option>
+                                {% for categoria in categorias %}
+                                <option value="{{ categoria.id }}">{{ categoria.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="form-group mb-4">
+                            <label for="descripcion" class="form-label">Contenido</label>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="6" required></textarea>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="#" class="btn btn-outline-secondary me-md-2 mx-2">Cancelar</a>
+                            <button type="submit" class="btn btn-primary">Publicar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
