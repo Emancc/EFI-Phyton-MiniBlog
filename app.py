@@ -80,3 +80,29 @@ def logout():
     logout_user()
     flash('Has cerrado sesión correctamente', 'info')
     return redirect(url_for('login'))
+
+@app.route('/blog/<int:blog_id>')
+def blog_detalle(blog_id):
+    # Obtener el blog con su autor y categoría
+    blog_data = db.session.query(Blogs, Users, Category).\
+        join(Users, Blogs.user_id == Users.id).\
+        outerjoin(Category, Blogs.category_id == Category.id).\
+        filter(Blogs.id == blog_id).first()
+    
+    if not blog_data:
+        abort(404)
+        
+    blog, author, category = blog_data
+    
+    # Estructurar los datos para la plantilla
+    blog_info = {
+        'id': blog.id,
+        'title': blog.title,
+        'description': blog.description,
+        'created_at': blog.created_at,
+        'author': {'id': author.id, 'username': author.username},
+        'blog_category': {'id': category.id, 'name': category.name} if category else None,
+        'comments': blog.comments  # Esto ya está disponible por la relación
+    }
+    
+    return render_template('blog_detalle.html', blog=blog_info)
