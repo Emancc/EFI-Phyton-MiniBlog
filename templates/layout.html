@@ -22,13 +22,13 @@
               <a id="links" class="nav-link" href="{{ url_for('index') }}">Inicio</a>
             </li>
             <li class="nav-item">
-              <a id="links" class="nav-link" href="#">Crear Blog</a>
+              <a id="links" class="nav-link" href="{{ url_for('crear_blog') }}">Crear Blog</a>
             </li>
             <li class="nav-item">
-              <a id="links" class="nav-link" href="#">Categorias</a>
+              <a id="links" class="nav-link" href="{{ url_for('categoria') }}">Categorias</a>
             </li>   
             <li class="nav-item">
-              <a id="links" class="nav-link" href="#">Acerca de</a>
+              <a id="links" class="nav-link" href="{{ url_for('about') }}">Acerca de</a>
             </li> 
           </ul>
           <ul class="navbar-nav ml-auto">
@@ -70,7 +70,73 @@
       {% block content %}{% endblock %}
       </div>
     </main>
-   
+    <footer class="bg-dark text-white mt-5 w-100">
+      <div class="container py-5">
+        <div class="row g-4">
+          <!-- Logo y descripción -->
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h4 class="d-flex align-items-center mb-3">
+              <span class="text-primary fw-bold">MINI</span>BLOG
+            </h4>
+            <p class="text-muted">Comparte tus historias, conocimientos y experiencias con el mundo a través de nuestra plataforma de blogs.</p>
+            <div class="social-links mt-3">
+              <a href="#" class="text-white me-3" title="Facebook"><i class="bi bi-facebook fs-5"></i></a>
+              <a href="#" class="text-white me-3" title="Twitter"><i class="bi bi-twitter fs-5"></i></a>
+              <a href="#" class="text-white me-3" title="Instagram"><i class="bi bi-instagram fs-5"></i></a>
+              <a href="#" class="text-white" title="LinkedIn"><i class="bi bi-linkedin fs-5"></i></a>
+            </div>
+          </div>
+          
+          <!-- Enlaces rápidos -->
+          <div class="col-md-2 col-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">Enlaces</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="{{ url_for('index') }}" class="text-muted text-decoration-none">Inicio</a></li>
+              <li class="mb-2"><a href="{{ url_for('categoria') }}" class="text-muted text-decoration-none">Categorías</a></li>
+              <li class="mb-2"><a href="{{ url_for('about') }}" class="text-muted text-decoration-none">Acerca de</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Términos de uso</a></li>
+              <li><a href="#" class="text-muted text-decoration-none">Política de privacidad</a></li>
+            </ul>
+          </div>
+          
+          <!-- Categorías -->
+          <div class="col-md-3 col-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-4">Categorías</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Tecnología</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Desarrollo Web</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Diseño</a></li>
+              <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Negocios</a></li>
+              <li><a href="#" class="text-muted text-decoration-none">Más categorías</a></li>
+            </ul>
+          </div>
+          
+          <!-- Contacto -->
+          <div class="col-md-3">
+            <h5 class="text-uppercase mb-4">Contacto</h5>
+            <ul class="list-unstyled text-muted">
+              <li class="mb-2"><i class="bi bi-envelope me-2"></i> contacto@miniblog.com</li>
+              <li class="mb-2"><i class="bi bi-telephone me-2"></i> +54 9 358 456789</li>
+              <li><i class="bi bi-geo-alt me-2"></i> Rio Cuarto, Córdoba, Argentina</li>
+            </ul>
+            <div class="mt-4">
+              <button class="btn btn-outline-light btn-sm">ITEC RIO CUARTO</button>
+            </div>
+          </div>
+        </div>
+        
+        <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+        
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <p class="mb-0">&copy; 2025 <span class="text-primary">MINI</span>BLOG. Todos los derechos reservados.</p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <p class="mb-0">Hecho con <i class="bi bi-heart-fill text-danger"></i> por <a href="#" class="text-decoration-none text-primary">Eman Cepeda</a> y <a href="#" class="text-decoration-none text-primary">Federico Arballo</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
