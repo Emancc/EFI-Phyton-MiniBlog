@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}Editar Blog{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="text-center mb-4"><span>EDITAR</span> BLOG</h3>
+                    <form method="post" action="{{ url_for('edit_blog', blog_id=blog.id) }}">
+                        <div class="form-group mb-3">
+                            <label for="title" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{ blog.title }}" required>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label for="category_id" class="form-label">Categoría</label>
+                            <select class="form-select" id="category_id" name="category_id">
+                                <option value="">Sin categoría</option>
+                                {% for categoria in categories %}
+                                <option value="{{ categoria.id }}" {% if blog.category_id == categoria.id %}selected{% endif %}>
+                                    {{ categoria.name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="form-group mb-4">
+                            <label for="description" class="form-label">Contenido</label>
+                            <textarea class="form-control" id="description" name="description" rows="8" required>{{ blog.description }}</textarea>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary me-md-2 mx-2">Cancelar</a>
+                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

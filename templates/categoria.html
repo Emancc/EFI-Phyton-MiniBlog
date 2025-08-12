@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %} Categorias {% endblock %}
+
+{% block content %}
+<div class="container py-5 text-center">
+    <h1 class="display-5 fw-bold mb-3"><span class="text-primary">CATEGORIAS</span> BLOGS</h1>
+    <p class="lead">En esta seccion puedes ver todas las categorias de blogs</p>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for categoria in categorias %}
+        <div class="col-6 my-2">
+            <div class="card h-100 shadow-sm d-flex flex-column">
+                <div class="card-body text-center flex-grow-1">
+                    <h5 class="card-title">{{ categoria.name }}</h5>
+                    <p class="card-texts">{{ categoria.description }}</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <a href="{{ url_for('categoria_detalle', slug=categoria.slug) }}" class="btn btn-outline-primary w-100">Ver artículos</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Error del servidor - Mi Blog{% endblock %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="display-1">500</h1>
+            <h2>Error del servidor</h2>
+            <p class="lead">¡Vaya! Algo salió mal en nuestro servidor. Por favor, inténtalo de nuevo más tarde.</p>
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Volver al inicio</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
