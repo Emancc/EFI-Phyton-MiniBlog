@@ -1,0 +1,137 @@
+{% extends "layout.html" %}
+
+{% block title %} Acerca de MINIBLOG {% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Acerca de <span class="text-primary">MINI</span>BLOG</h1>
+        <p class="lead text-muted">Donde tus ideas toman vida</p>
+    </div>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+            <h2 class="fw-bold mb-4">¿Qué es <strong class="text-primary">MINI</strong>BLOG?</h2>
+            <p class="lead">
+                <strong class="text-primary">MINI</strong>BLOG es una plataforma de blogs moderna e intuitiva diseñada para que compartas tus pensamientos, experiencias y conocimientos con el mundo. Ya seas un escritor experimentado o recién estés comenzando, nuestra plataforma te ofrece las herramientas necesarias para expresarte de manera efectiva.
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-0 rounded-3 overflow-hidden">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.chRPJBszkdcT5lQQq8bjGgHaEU?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Blogging" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
+                <div class="card-body p-4">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-pencil-square" style="font-size: 2rem;"></i>
+                    </div>
+                    <h4 class="card-title fw-bold">Crea con Facilidad</h4>
+                    <p class="card-text">Interfaz intuitiva que te permite escribir y formatear tus publicaciones sin complicaciones técnicas.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
+                <div class="card-body p-4">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-tags" style="font-size: 2rem;"></i>
+                    </div>
+                    <h4 class="card-title fw-bold">Organiza por Categorías</h4>
+                    <p class="card-text">Clasifica tus publicaciones en diferentes categorías para que tus lectores encuentren fácilmente lo que buscan.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3">
+                <div class="card-body p-4">
+                    <div class="text-primary mb-3">
+                        <i class="bi bi-chat-dots" style="font-size: 2rem;"></i>
+                    </div>
+                    <h4 class="card-title fw-bold">Interactúa</h4>
+                    <p class="card-text">Recibe comentarios y genera conversaciones significativas con tu audiencia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light p-5 rounded-3 mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h3 class="fw-bold mb-3">Comienza tu viaje de escritura hoy</h3>
+                <p class="lead mb-4">Únete a nuestra comunidad de escritores y lectores apasionados por compartir conocimiento e historias.</p>
+                {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">Regístrate Ahora</a>
+                {% else %}
+                <a href="{{ url_for('crear_blog') }}" class="btn btn-primary btn-lg">Escribe tu primer blog</a>
+                {% endif %}
+            </div>
+            <div class="col-lg-4 d-none d-lg-block">
+                <img src="https://thumbs.dreamstime.com/b/idea-writing-handwriting-word-chalkboard-glowing-light-bulb-69117648.jpg" alt="Start Writing" class="img-fluid rounded-pill">
+            </div>
+        </div>
+    </div>
+    <section class="container py-5">
+        <h3 class="text-center mb-5">Nuestro Equipo</h3>
+        <div class="row justify-content-center">
+            <!-- Desarrollador 1 -->
+            <div class="col-md-5 col-lg-4 mb-4 mb-md-0">
+                <div class="card h-100 border-0 shadow-sm rounded-3">
+                    <div class="card-body text-center p-4">
+                        <div class="mx-auto mb-3">
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 120px; height: 120px; font-size: 2.5rem; font-weight: bold;">
+                                EC
+                            </div>
+                        </div>
+                        <h4 class="mb-1">Eman Cepeda</h4>
+                        <p class="text-muted mb-3">Desarrollador Full Stack</p>
+                        <p class="text-muted small">Especializado en desarrollo web y bases de datos. Apasionado por crear experiencias de usuario excepcionales.</p>
+                        <div class="mt-3">
+                            <a href="https://github.com/" target="_blank" class="text-decoration-none text-dark mx-2" title="GitHub">
+                                <i class="bi bi-github fs-4"></i>
+                            </a>
+                            <a href="https://linkedin.com/" target="_blank" class="text-decoration-none text-dark mx-2" title="LinkedIn">
+                                <i class="bi bi-linkedin fs-4"></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" class="text-decoration-none text-dark mx-2" title="Twitter">
+                                <i class="bi bi-twitter fs-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desarrollador 2 -->
+            <div class="col-md-5 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm rounded-3">
+                    <div class="card-body text-center p-4">
+                        <div class="mx-auto mb-3">
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 120px; height: 120px; font-size: 2.5rem; font-weight: bold;">
+                                FA
+                            </div>
+                        </div>
+                        <h4 class="mb-1">Federico Arballo</h4>
+                        <p class="text-muted mb-3">Diseñador UI/UX</p>
+                        <p class="text-muted small">Experto en diseño de interfaces y experiencia de usuario. Se asegura de que cada interacción sea intuitiva y atractiva.</p>
+                        <div class="mt-3">
+                            <a href="https://github.com/" target="_blank" class="text-decoration-none text-dark mx-2" title="GitHub">
+                                <i class="bi bi-github fs-4"></i>
+                            </a>
+                            <a href="https://linkedin.com/" target="_blank" class="text-decoration-none text-dark mx-2" title="LinkedIn">
+                                <i class="bi bi-linkedin fs-4"></i>
+                            </a>
+                            <a href="https://dribbble.com/" target="_blank" class="text-decoration-none text-dark mx-2" title="Dribbble">
+                                <i class="bi bi-dribbble fs-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
