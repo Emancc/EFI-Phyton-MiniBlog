@@ -1,0 +1,92 @@
+
+#links{
+    color: #fff;
+}
+
+#User{
+    color: #71aa42;
+    font-weight: bold;
+}
+
+/* Footer Sticky */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: #eee5cc;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+#descripcion{
+    height: 50vh;
+}
+
+.container p{
+    overflow:auto;
+}
+
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    color: #333;
+    font-weight: 600;
+}
+
+.card-texts {
+    font-size: 0.8rem;
+}
+
+.btn-outline-primary {
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.card-crear {
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+}
